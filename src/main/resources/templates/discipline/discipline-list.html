@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student performance</title>
+</head>
+<body>
+<div th:switch = "${discipline}">
+    <h2 th:case="null">No disciplines found</h2>
+    <div th:case="*">
+        <h2>Disciplines</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name of discipline</th>
+                <th>Amount hours</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="discipline : ${discipline}">
+                <td th:text="${discipline.idDiscipline}"></td>
+                <td th:text="${discipline.nameDiscipline}"></td>
+                <td th:text="${discipline.studyHours}"></td>
+
+
+                <td><a th:href="@{discipline/discipline-update/{idDiscipline}(idDiscipline=${discipline.idDiscipline})}"><button>Edit</button></a></td>
+                <td><a th:href="@{discipline/discipline-delete/{idDiscipline}(idDiscipline=${discipline.idDiscipline})}"><button>Delete</button></a></td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <p><a href="discipline/discipline-create"><button>Create a discipline</button></a> </p>
+    <a th:href="@{/main}">
+        <button>Back</button>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student performance</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<form action="#" th:action="@{/student/student-create}" th:object="${student}" method = "post">
+
+    <table>
+        <tr>
+            <td>Full name</td>
+            <td> <input type = "text" th:field="*{nameStudent}" /></td>
+            <td th:if = "${#fields.hasErrors('nameStudent')}" th:errors="*{nameStudent}" ></td>
+        </tr>
+
+        <tr>
+            <td><label >Group</label></td>
+            <td>
+                <select id="group" name="group" th:field="*{group}">>
+                    <option th:each="group : ${allGroups}"
+                            th:text="${group.nameGroup}"
+                            th:value="${group.idGroup}"></option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label for="bDayStudent">Birthday</label></td>
+            <td> <input type = "text" th:field="*{bDayStudent}" id="bDayStudent"  placeholder="Birthday"></td>
+            <td th:errors="*{bDayStudent}" th:if="${#fields.hasErrors('bDayStudent')}"></td>
+        </tr>
+
+        <tr>
+            <td><label for="cityStudent">City</label></td>
+            <td> <input type = "text" th:field="*{cityStudent}" id="cityStudent" placeholder="City"></td>
+            <td th:errors="*{cityStudent}" th:if="${#fields.hasErrors('cityStudent')}"></td>
+        </tr>
+
+        <tr>
+            <td><label for="cashStudent">Scholarship</label></td>
+            <td> <input type = "text" th:field="*{cashStudent}" id="cashStudent" placeholder="Scholarship"></td>
+            <td th:errors="*{cashStudent}" th:if="${#fields.hasErrors('cashStudent')}"></td>
+        </tr>
+
+
+    </table>
+
+    <input type="submit" value="Create a student"/>
+    <p><input type="button" value="Cancel" onclick="window.location.href='/student'"/></p>
+    <p><input type="button" value="Back in menu" onclick="window.location.href='/main'"/></p>
+
+</form>
+</body>
+</html>

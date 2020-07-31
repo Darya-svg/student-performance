@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student performance</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<h1>Create a mark</h1>
+<form action="#" th:action="@{/mark/mark-create}" th:object="${mark}" method="post">
+
+    <table>
+
+        <tr>
+            <td><label>Student</label></td>
+            <td>
+                <select  name="student" th:field="*{student}">>
+                    <option th:each="student : ${allStudents}"
+                            th:text="${student.nameStudent}"
+                            th:value="${student.idStudent}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Discipline</label></td>
+            <td>
+                <select name="discipline" th:field="*{discipline}">>
+                    <option th:each="discipline : ${allDisciplines}"
+                            th:text="${discipline.nameDiscipline}"
+                            th:value="${discipline.idDiscipline}"></option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td><label>Mark</label></td>
+            <td><input  type="number" th:field="*{mark}"></td>
+            <td th:errors="*{mark}" th:if="${#fields.hasErrors('mark')}"></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" value="Create a mark">
+    <p><input type="button" value="Cancel" onclick="window.location.href='/mark'"/></p>
+    <p><input type="button" value="Back in menu" onclick="window.location.href='/main'"/></p>
+
+</form>
+</body>
+</html>

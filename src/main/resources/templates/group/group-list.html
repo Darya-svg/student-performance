@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student performance</title>
+</head>
+<body>
+<div th:switch = "${group}">
+    <h2 th:case="null">No Groups found</h2>
+    <div th:case="*">
+        <h2>Groups</h2>
+        <table border = "1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name of group</th>
+                <th>Year of create</th>
+                <th>Amount of students</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="group : ${group}">
+                <td th:text="${group.idGroup}"></td>
+                <td th:text="${group.nameGroup}"></td>
+                <td th:text="${group.created}"></td>
+                <td th:text="${group.countStud}"></td>
+
+
+                <td><a th:href="@{group/group-update/{idGroup}(idGroup=${group.idGroup})}"><button>Edit</button></a></td>
+                <td><a th:href="@{group/group-delete/{idGroup}(idGroup=${group.idGroup})}"><button>Delete</button></a></td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <p><a href="group/group-create"><button>Create a group</button></a> </p>
+    <a th:href="@{/main}">
+        <button>Back</button>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MySpringApp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:switch = "${student}">
+    <h2 th:case="null">No students found</h2>
+    <div th:case="*">
+        <h2>Students of 17-SBK</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Group</th>
+                <th>Name</th>
+                <th>Birthday</th>
+                <th>City</th>
+                <th>Scholarship</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="student : ${student}">
+                <td th:text="${student.group.idGroup}"></td>
+                <td th:text="${student.group.nameGroup}"></td>
+                <td th:text="${student.nameStudent}"></td>
+                <td  th:text="${student.bDayStudent}" ></td>
+                <td th:text="${student.cityStudent}"></td>
+                <td th:text="${student.cashStudent}"></td>
+
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <p><a href="/main"><button>Back in menu</button></a> </p>
+</div>
+</body>
+</html>

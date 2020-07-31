@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student performance</title>
+</head>
+<body>
+<form action="#" th:action="@{/mark/mark-update}" th:object="${mark}" method = "post">
+    <table>
+        <tr>
+            <td><label>ID</label></td>
+            <td><input  type="number" th:field="*{idMark}"></td>
+            <td th:errors="*{idMark}" th:if="${#fields.hasErrors('idMark')}"></td>
+        </tr>
+
+        <tr>
+            <td><label>Student</label></td>
+            <td>
+                <select  name="student" th:field="*{student}">>
+                    <option th:each="student : ${allStudents}"
+                            th:text="${student.nameStudent}"
+                            th:value="${student.idStudent}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Discipline</label></td>
+            <td>
+                <select name="discipline" th:field="*{discipline}">>
+                    <option th:each="discipline : ${allDisciplines}"
+                            th:text="${discipline.nameDiscipline}"
+                            th:value="${discipline.idDiscipline}"></option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td><label>Mark</label></td>
+            <td><input  type="number" th:field="*{mark}"></td>
+            <td th:errors="*{mark}" th:if="${#fields.hasErrors('mark')}"></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" value="Update a mark">
+    <p><input type="button" value="Cancel" onclick="window.location.href='/marks'"/></p>
+    <p><input type="button" value="Back in menu" onclick="window.location.href='/main'"/></p>
+
+</form>
+</body>
+</html>

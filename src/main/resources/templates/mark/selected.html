@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student performance</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:switch = "${mark}">
+    <h2 th:case="null">No marks found</h2>
+    <div th:case="*">
+        <h2>Performance of 17-SBK</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Discipline</th>
+                <th>Mark</th>
+
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="mark : ${mark}">
+                <td th:text="${mark.student.nameStudent}"></td>
+                <td th:text="${mark.discipline.nameDiscipline}"></td>
+                <td th:text="${mark.mark}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <p><a href="/main"><button>Back in menu</button></a> </p>
+</div>
+</body>
+</html>

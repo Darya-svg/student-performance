@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student performance</title>
+</head>
+<body>
+<form action="#" th:action="@{/discipline/discipline-update}" th:object="${discipline}" method = "post">
+
+    <table>
+        <tr>
+            <td><label for="idDiscipline">ID</label></td>
+            <td> <input type = "text" th:field="*{idDiscipline}" id="idDiscipline" placeholder="ID"></td>
+            <td th:errors="*{idDiscipline}" th:if="${#fields.hasErrors('idDiscipline')}"></td>
+        </tr>
+        <tr>
+            <td><label for="nameDiscipline">Name of the discipline</label></td>
+            <td> <input type = "text" th:field="*{nameDiscipline}" id="nameDiscipline" placeholder="Name"></td>
+            <td th:errors="*{nameDiscipline}" th:if="${#fields.hasErrors('nameDiscipline')}"></td>
+        </tr>
+        <tr>
+            <td><label for="studyHours">Hours</label></td>
+            <td> <input type = "text" th:field="*{studyHours}" id="studyHours"  placeholder="Hours"></td>
+            <td th:errors="*{studyHours}" th:if="${#fields.hasErrors('studyHours')}"></td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Update a discipline">
+    <p><input type="button" value="Cancel" onclick="window.location.href='/disciplines'"/></p>
+    <p><input type="button" value="Back in menu" onclick="window.location.href='/main'"/></p>
+</form>
+</body>
+</html>

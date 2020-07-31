@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student performance</title>
+</head>
+<body>
+<form action="#" th:action="@{/group/group-create}" th:object="${group}" method = "post">
+
+    <table>
+        <tr>
+            <td><label for="nameGroup">Group name</label></td>
+            <td> <input type = "text" th:field="*{nameGroup}" id="nameGroup" placeholder="Name"></td>
+            <td th:errors="*{nameGroup}" th:if="${#fields.hasErrors('nameGroup')}"></td>
+        </tr>
+
+
+        <tr>
+            <td><label for="created">Year of creation</label></td>
+            <td> <input type = "text" th:field="*{created}" id="created"  placeholder="Date of creation"></td>
+            <td th:errors="*{created}" th:if="${#fields.hasErrors('created')}"></td>
+        </tr>
+
+        <tr>
+            <td><label for="countStud">Amount of students</label></td>
+            <td> <input type = "text" th:field="*{countStud}" id="countStud" placeholder="Amount"></td>
+            <td th:errors="*{countStud}" th:if="${#fields.hasErrors('countStud')}"></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" value="Create a group"/>
+    <p><input type="button" value="Cancel" onclick="window.location.href='/group'"/></p>
+    <p><input type="button" value="Back in menu" onclick="window.location.href='/main'"/></p>
+
+
+
+</form>
+</body>
+</html>
